@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { triangulate, rssiToDistance } = require('../server/triangulate');
+const { triangulate, rssiToDistance } = require('../public/js/triangulate');
 
 test('single point returns that point verbatim', () => {
   const result = triangulate([{ lat: 53.71, lon: 10.51, level: -60 }]);
