@@ -1,0 +1,19 @@
+{
+  "name": "wigle-web",
+  "version": "1.0.0",
+  "description": "Weboberflaeche zum Importieren einer WiGLE WiFi SQLite-Datenbank, Anzeige der Netze auf einer OpenStreetMap-Karte, Auflistung mit Filtern und SSID-Triangulation.",
+  "private": true,
+  "type": "commonjs",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "express": "^4.21.0",
+    "multer": "^2.0.1"
+  }
+}
