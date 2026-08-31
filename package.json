@@ -1,0 +1,15 @@
+{
+  "name": "wigle-web",
+  "version": "2.0.0",
+  "description": "Statische Weboberflaeche (GitHub Pages) zum Importieren einer WiGLE WiFi SQLite-Datenbank direkt im Browser: OpenStreetMap-Karte, Auflistung mit Filtern, Zeitschieberegler, Heatmap und SSID-Triangulation.",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "serve": "node tools/serve.js",
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "sql.js": "^1.10.3"
+  }
+}

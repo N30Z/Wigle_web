@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>WiGLE WiFi Map</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <button id="sidebar-toggle" aria-label="Menü umschalten">☰</button>
+    <h1>WiGLE WiFi Map</h1>
+    <div id="upload-area">
+      <label class="file-btn">
+        <input type="file" id="file-input" accept=".sqlite,.db,.sqlite3" hidden />
+        <span id="file-btn-label">WiGLE-SQLite laden…</span>
+      </label>
+      <span id="upload-status"></span>
+    </div>
+  </header>
+
+  <div id="main">
+    <div id="sidebar-backdrop"></div>
+    <aside id="sidebar">
+      <div id="filters">
+        <h2>Filter</h2>
+        <label>
+          SSID enthält
+          <input type="text" id="filter-ssid" placeholder="z.B. FRITZ!Box" />
+        </label>
+        <label>
+          Verschlüsselung
+          <select id="filter-encryption" multiple size="5"></select>
+        </label>
+        <label>
+          Frequenzband
+          <select id="filter-band" multiple size="3"></select>
+        </label>
+        <label>
+          Min. Messpunkte
+          <input type="number" id="filter-min-points" min="0" value="0" />
+        </label>
+        <label>
+          Zeitraum
+          <span id="time-range-label" class="range-label"></span>
+          <div id="time-slider"></div>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="filter-heatmap" />
+          Heatmap statt Einzelpunkten
+        </label>
+        <button id="filter-reset">Filter zurücksetzen</button>
+      </div>
+
+      <div id="network-list-wrap">
+        <h2>Netze <span id="network-count"></span></h2>
+        <table id="network-table">
+          <thead>
+            <tr>
+              <th data-sort="ssid">SSID</th>
+              <th data-sort="encryption">Verschl.</th>
+              <th data-sort="band">Band</th>
+              <th data-sort="pointCount">Pkt.</th>
+              <th data-sort="bestLevel">Signal</th>
+            </tr>
+          </thead>
+          <tbody id="network-table-body"></tbody>
+        </table>
+      </div>
+    </aside>
+
+    <main id="map-wrap">
+      <div id="map"></div>
+      <div id="detail-panel" class="hidden">
+        <button id="detail-close" title="Schließen">×</button>
+        <h3 id="detail-ssid"></h3>
+        <div id="detail-body"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+<script src="js/triangulate.js"></script>
+<script src="js/wigleData.js"></script>
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
